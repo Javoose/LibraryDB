@@ -14,7 +14,7 @@ FROM Books
 GROUP BY Language;
 
 -- 3. Count the number of authors from each country
-SELECT Country, COUNT(*) AS [Authors]
+SELECT Country, COUNT(*) AS Authors
 FROM Authors
 GROUP BY Country;
 
@@ -66,7 +66,7 @@ FROM Books
 ORDER BY PageCount DESC;
 
 -- 2. List customers from the newest to the oldest registration date
-SELECT FirstName + ' ' + LastName AS [Name], RegistrationDate
+SELECT FirstName + ' ' + LastName AS Name, RegistrationDate
 FROM Customers
 ORDER BY RegistrationDate DESC;
 
