@@ -7,29 +7,29 @@ GO
 SELECT B.Title AS Book, A.FirstName + ' ' + A.LastName AS Author
 FROM Books AS B
 INNER JOIN Authors AS A
-ON B.AuthorID = A.AuthorID;
+	ON B.AuthorID = A.AuthorID;
 
 -- 2. List all books with their category names
 SELECT B.Title AS Book, Cat.CategoryName AS Category
 FROM Books AS B
 INNER JOIN Categories AS Cat
-ON B.CategoryID = Cat.CategoryID;
+	ON B.CategoryID = Cat.CategoryID;
 
 -- 3. List all loans with book titles and customer names
 SELECT B.Title AS Book, Cus.FirstName + ' ' + Cus.LastName AS [Customer Name]
 FROM Books AS B
 INNER JOIN Loans AS L
-ON B.BookID = L.BookID
+	ON B.BookID = L.BookID
 INNER JOIN Customers AS Cus
-ON Cus.CustomerID = L.CustomerID;
+	ON Cus.CustomerID = L.CustomerID;
 
 -- 4. List all books with both their authors and categories
 SELECT B.Title AS Book, A.FirstName + ' ' + A.LastName AS Author, Cat.CategoryName AS Category
 FROM Books AS B
 INNER JOIN Authors AS A
-ON B.AuthorID = A.AuthorID
+	ON B.AuthorID = A.AuthorID
 INNER JOIN Categories AS Cat
-ON B.CategoryID = Cat.CategoryID;
+	ON B.CategoryID = Cat.CategoryID;
 
 -- LEFT JOIN PRACTICE
 
@@ -37,13 +37,13 @@ ON B.CategoryID = Cat.CategoryID;
 SELECT Cus.FirstName + ' ' + Cus.LastName AS [Customer Name], L.LoanID
 FROM Customers AS Cus
 LEFT JOIN Loans AS L
-ON Cus.CustomerID = L.CustomerID;
+	ON Cus.CustomerID = L.CustomerID;
 
 -- 2. List all books and their loan IDs, including books that have never been borrowed
 SELECT B.Title AS Book, L.LoanID
 FROM Books AS B
 LEFT JOIN Loans AS L
-ON B.BookID = L.BookID;
+	ON B.BookID = L.BookID;
 
 -- RIGHT JOIN PRACTICE
 
@@ -51,7 +51,7 @@ ON B.BookID = L.BookID;
 SELECT Cus.FirstName + ' ' + Cus.LastName AS [Customer Name], L.LoanID
 FROM Customers AS Cus
 RIGHT JOIN Loans AS L
-ON Cus.CustomerID = L.CustomerID;
+	ON Cus.CustomerID = L.CustomerID;
 
 -- FULL JOIN PRACTICE
 
@@ -64,7 +64,7 @@ SELECT
 	L.LoanDate
 FROM Customers AS Cus
 FULL JOIN Loans AS L
-ON Cus.CustomerID = L.CustomerID;
+	ON Cus.CustomerID = L.CustomerID;
 
 -- UNION PRACTICE
 
