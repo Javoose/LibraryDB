@@ -8,19 +8,34 @@ SELECT *
 FROM Books;
 
 -- 2. Retrieve titles, publication years, and page counts of all books
-SELECT Title, PublishYear, PageCount 
+SELECT 
+	Title, 
+	PublishYear, 
+	PageCount 
 FROM Books;
 
 -- 3. Retrieve first names, last names, and countries of all authors
-SELECT FirstName, LastName, Country 
+SELECT 
+	FirstName, 
+	LastName, 
+	Country 
 FROM Authors;
 
 -- 4. Retrieve names, cities, and registration dates of all customers
-SELECT FirstName, LastName, City, RegistrationDate
+SELECT 
+	FirstName, 
+	LastName, 
+	City, 
+	RegistrationDate
 FROM Customers;
 
 -- 5. Retrieve book IDs, customer IDs, and date information for all loans
-SELECT BookID, CustomerID, LoanDate, DueDate, ReturnDate
+SELECT 
+	BookID, 
+	CustomerID, 
+	LoanDate, 
+	DueDate, 
+	ReturnDate
 FROM Loans;
 
 -- INSERT PRACTICE
