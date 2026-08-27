@@ -4,7 +4,9 @@ GO
 -- GENERAL SQL REVIEW
 
 -- 1. List all books published after 1940, ordered from the newest to the oldest
-SELECT Title, PublishYear
+SELECT 
+	Title, 
+	PublishYear
 FROM Books
 WHERE PublishYear > 1940
 ORDER BY PublishYear DESC;
@@ -40,13 +42,17 @@ WHERE Cus.CustomerID IN
 	WHERE ReturnDate IS NULL);
 
 -- 5. Find books whose page count is greater than the average page count of all books
-SELECT Title AS Book, PageCount
+SELECT 
+	Title AS Book, 
+	PageCount
 FROM Books
 WHERE PageCount >
 	(SELECT AVG(PageCount) FROM Books);
 
 -- 6. Show each language and the number of books written in that language, but only include languages with at least three books
-SELECT Language, COUNT(*) AS [Number of Books]
+SELECT 
+	Language, 
+	COUNT(*) AS [Number of Books]
 FROM Books
 GROUP BY Language
 HAVING COUNT(*) >= 3;
@@ -80,7 +86,9 @@ LEFT JOIN Loans AS L
 GROUP BY Cus.FirstName + ' ' + Cus.LastName, Cus.CustomerID;
 
 -- 10. Find the three most frequently borrowed books
-SELECT TOP 3 B.Title AS Book, COUNT(L.BookID) AS [Number of Loans]
+SELECT TOP 3 
+	B.Title AS Book, 
+	COUNT(L.BookID) AS [Number of Loans]
 FROM Books AS B
 INNER JOIN Loans AS L
 	ON B.BookID = L.BookID
@@ -103,7 +111,9 @@ WHERE CustomerID IN
 	WHERE ReturnDate > DueDate);
 
 -- 13. Show each category and the average page count of its books, ordered from the highest average to the lowest
-SELECT Cat.CategoryName AS Category, AVG(B.PageCount) AS [Average Page Count]
+SELECT 
+	Cat.CategoryName AS Category, 
+	AVG(B.PageCount) AS [Average Page Count]
 FROM Categories AS Cat
 INNER JOIN Books AS B
 	ON Cat.CategoryID = B.CategoryID
