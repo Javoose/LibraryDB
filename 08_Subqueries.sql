@@ -4,28 +4,36 @@ GO
 -- SUBQUERY PRACTICE
 
 -- 1. Find books with more pages than the average page count of all books
-SELECT Title, PageCount
+SELECT 
+	Title, 
+	PageCount
 FROM Books
 WHERE PageCount > 
 	(SELECT AVG(PageCount) 
 	FROM Books);
 
 -- 2. Find books with a stock quantity higher than the average stock quantity
-SELECT Title, StockQuantity
+SELECT 
+	Title, 
+	StockQuantity
 FROM Books
 WHERE StockQuantity > 
 	(SELECT AVG(StockQuantity) 
 	FROM Books);
 
 -- 3. Find the book or books with the highest page count
-SELECT Title, PageCount
+SELECT 
+	Title, 
+	PageCount
 FROM Books
 WHERE PageCount = 
 	(SELECT MAX(PageCount)
 	FROM Books);
 
 -- 4. Find the book or books with the lowest stock quantity
-SELECT Title, StockQuantity
+SELECT 
+	Title, 
+	StockQuantity
 FROM Books
 WHERE StockQuantity =
 	(SELECT MIN(StockQuantity)
