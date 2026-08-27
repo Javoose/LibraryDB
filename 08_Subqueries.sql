@@ -67,3 +67,91 @@ FROM Customers
 WHERE CustomerID NOT IN
 	(SELECT CustomerID FROM Loans);
 
+-- NESTED SUBQUERIES
+
+-- 1. Find books written by authors who have written
+-- at least one book with more pages than the average
+-- page count of all books.
+-- Display the title, author ID, and page count.
+SELECT 
+	Title,
+	AuthorID,
+	PageCount
+FROM Books
+WHERE AuthorID IN
+(
+	SELECT AuthorID 
+	FROM Books
+	WHERE PageCount >
+	(
+		SELECT AVG(PageCount)
+		FROM Books
+	)
+);
+
+-- 2. Find customers who have borrowed a book written by
+-- an author who has at least one book with more pages than
+-- the average page count of all books.
+-- Display the customer's first name, last name, and city.
+SELECT 
+	FirstName,
+	LastName,
+	City
+FROM Customers
+WHERE CustomerID IN
+(
+	SELECT CustomerID
+	FROM Loans 
+	WHERE BookID IN
+	(
+		SELECT BookID
+		FROM Books
+		WHERE AuthorID IN
+		(
+			SELECT AuthorID 
+			FROM Books
+			WHERE PageCount > 
+			(
+				SELECT AVG(PageCount)
+				FROM Books
+			)
+		)
+	)
+);
+
+-- 3. Find books borrowed by customers who have borrowed
+-- a book written by an author whose books have an average
+-- page count greater than the average page count of all books.
+-- Display the book title, publication year, and page count.
+SELECT 
+	Title,
+	PublishYear,
+	PageCount
+FROM Books
+WHERE BookID IN
+(
+	SELECT BookID 
+	FROM Loans
+	WHERE CustomerID IN
+	(
+		SELECT CustomerID
+		FROM Loans
+		WHERE BookID IN
+		(
+			SELECT BookID
+			FROM Books
+			WHERE AuthorID IN
+			(
+				SELECT AuthorID
+				FROM Books
+				GROUP BY AuthorID
+				HAVING AVG(PageCount) > 
+				(
+					SELECT AVG(PageCount)
+					FROM Books
+				)
+			)
+		)
+	)
+);
+
