@@ -9,7 +9,10 @@ GO
 CREATE PROCEDURE GetBooksInStock
 AS
 BEGIN
-	SELECT Title, PublishYear, StockQuantity
+	SELECT 
+		Title, 
+		PublishYear, 
+		StockQuantity
 	FROM Books
 	WHERE StockQuantity > 0
 	ORDER BY StockQuantity DESC;
@@ -27,7 +30,10 @@ CREATE PROCEDURE GetBooksByMinPages
 	@MinPageCount INT
 AS
 BEGIN
-	SELECT Title, PageCount, PublishYear
+	SELECT 
+		Title, 
+		PageCount, 
+		PublishYear
 	FROM Books
 	WHERE PageCount >= @MinPageCount
 	ORDER BY PageCount DESC;
@@ -46,7 +52,10 @@ CREATE PROCEDURE GetBooksInRange
 	@MaxRange INT
 AS
 BEGIN
-	SELECT Title, PageCount, PublishYear
+	SELECT 
+		Title, 
+		PageCount, 
+		PublishYear
 	FROM Books
 	WHERE PageCount BETWEEN @MinRange AND @MaxRange
 	ORDER BY PageCount ASC;
@@ -63,7 +72,11 @@ CREATE PROCEDURE GetCustomersFromCity
 	@CityInput VARCHAR(50)
 AS
 BEGIN
-	SELECT FirstName, LastName, City, RegistrationDate
+	SELECT 
+		FirstName, 
+		LastName, 
+		City, 
+		RegistrationDate
 	FROM Customers
 	WHERE City = @CityInput;
 END;
@@ -80,7 +93,10 @@ CREATE PROCEDURE GetCustomersByMinLoanCount
 	@MinLoanCount INT
 AS
 BEGIN
-	SELECT Cus.FirstName, Cus.LastName, COUNT(L.CustomerID) AS [Loan Count]
+	SELECT 
+		Cus.FirstName, 
+		Cus.LastName, 
+		COUNT(L.CustomerID) AS [Loan Count]
 	FROM Customers AS Cus
 	INNER JOIN Loans AS L
 		ON Cus.CustomerID = L.CustomerID
