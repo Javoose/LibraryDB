@@ -4,17 +4,23 @@ GO
 -- GROUP BY AND HAVING PRACTICE
 
 -- 1. Count the number of books for each language
-SELECT Language, COUNT(*) AS [Number of Books]
+SELECT 
+  Language, 
+  COUNT(*) AS [Number of Books]
 FROM Books
 GROUP BY Language;
 
 -- 2. Calculate the average page count for each language
-SELECT Language, AVG(PageCount) AS [Average Page Count]
+SELECT 
+  Language, 
+  AVG(PageCount) AS [Average Page Count]
 FROM Books
 GROUP BY Language;
 
 -- 3. Count the number of authors from each country
-SELECT Country, COUNT(*) AS Authors
+SELECT 
+  Country, 
+  COUNT(*) AS Authors
 FROM Authors
 GROUP BY Country;
 
@@ -61,24 +67,32 @@ FROM Customers;
 -- ORDER BY PRACTICE
 
 -- 1. List books from the longest to the shortest
-SELECT Title, PageCount
+SELECT 
+  Title, 
+  PageCount
 FROM Books
 ORDER BY PageCount DESC;
 
 -- 2. List customers from the newest to the oldest registration date
-SELECT FirstName + ' ' + LastName AS Name, RegistrationDate
+SELECT 
+  FirstName + ' ' + LastName AS Name, 
+  RegistrationDate
 FROM Customers
 ORDER BY RegistrationDate DESC;
 
 -- TOP AND PERCENT PRACTICE
 
 -- 1. Retrieve the five longest books
-SELECT TOP 5 Title, PageCount
+SELECT TOP 5 
+  Title, 
+  PageCount
 FROM Books
 ORDER BY PageCount DESC;
 
 -- 2. Retrieve the top 25 percent of books with the highest stock quantity
-SELECT TOP 25 PERCENT Title, StockQuantity
+SELECT TOP 25 PERCENT 
+  Title, 
+  StockQuantity
 FROM Books
 ORDER BY StockQuantity DESC;
 
